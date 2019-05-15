@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista pracowników</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This page presents employee table with filters">
+    <meta name="keywords" content="employee, workers, list">
+    <meta name="author" content="Monika Matyszczak">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&amp;subset=latin-ext" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <section class="container employee-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Dział</th>
+                        <th>Wynagrodzenie</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="employee in Employees">
+                        <td>{{employee.imie}}</td>
+                        <td>{{employee.nazwisko}}</td>
+                        <td>{{employee.dzial}}</td>
+                        <td>{{employee.wynagrodzenieKwota}} {{employee.wynagrodzenieWaluta}}</td>
+                    </tr>
+                </tbody>
+                <!-- <EmployeeRow v-bind:employee="employee" v-for="employee in Employees" :key="employee.nazwisko" /> -->
+            </table>
+        </section>
+
+        <section class="container employee-card" id="employee-search">
+            <h2>Szukaj</h2>
+            <div class="search-wrap">
+                <label for="searchName">Osoba</p>
+                    <input type="text" class="input-style" id="searchName" v-model="searchName">
+                </label>
+            </div>
+
+
+            <div class="search-wrap">
+                <p>Dział</p>
+                <div v-for="dzial in Sections">
+                    <input type="checkbox" v-bind:name="dzial" v-bind:value="dzial" v-model="searchCheck"
+                        v-bind:checked="searchCheck">
+                    {{dzial}}
+                </div>
+            </div>
+
+            <div class="search-wrap">
+                <p>Wynagrodzenie</p>
+                <div>Od <input type="number" class="input-style" id="searchSalaryMin" v-model="searchSalaryMin"
+                        value="0"> </div>
+                <div>Do <input type="number" class="input-style" id="searchSalaryMax" v-model="searchSalaryMax"
+                        value="10000"></div>
+            </div>
+        </section>
+
+        <section class="container" id="employee-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Dział</th>
+                        <th>Wynagrodzenie</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="employee in employeesFilteredSalary">
+                        <td>{{employee.imie}}</td>
+                        <td>{{employee.nazwisko}}</td>
+                        <td>{{employee.dzial}}</td>
+                        <td>{{employee.wynagrodzenieKwota}} {{employee.wynagrodzenieWaluta}}</td>
+                    </tr>
+                </tbody>
+                <!-- <EmployeeRow v-bind:employee="employee" v-for="employee in Employees" :key="employee.nazwisko" /> -->
+            </table>
+        </section>
+
+
+
+        <section class="container employee-card" id="employee-add">
+            <h2>Dodaj pracownika</h2>
+
+            <div class="add-wrap">
+                <div>
+                    <p>Imię</p>
+                    <input class="input-style" type="text" id="addName" v-model="addName">
+                    <p>Nazwisko</p>
+                    <input class="input-style" type="text" id="addSurname" v-model="addSurname">
+                </div>
+                <div>
+                    <p>Dział</p>
+                    <input class="input-style" type="text" id="addSection" v-model="addSection">
+
+                    <p>Wynagrodzenie</p>
+                    <div class="employee-salary"><input class="input-style" type="text" id="addSalary"
+                            v-model="addSalary">
+                        <select name="waluty" v-model="addCurrency" id="addCurrency" class="input-style">
+                            <option value="PLN">PLN</option>
+                            <option value="EUR">EUR</option>
+                            <option value="USD">USD</option>
+                            <option value="GBP">GBP</option>
+                        </select></div>
+                </div>
+                <button v-on:click="addEmployee()">Dodaj</button>
+
+            </div>
+
+        </section>
+
+        <section class="container employee-card" id="employee-stats">
+            <div v-for="sum in SumSalary">
+                Pracownicy działu {{sum.dzial}} zarabiają łącznie
+                {{sum.wynagrodzenieSuma}} PLN
+            </div>
+            Pracownicy firmy zarabiają łącznie {{SumAll}} PLN
+
+        </section>
+
+
+        <script type="text/javascript" src="./js/script.js"></script>
+        </script>
+    </div>
+</body>
+
+</html>

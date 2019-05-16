@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
-    background: rgba(18, 38, 168, 1);
+    background-color: rgba(18, 38, 168, 1);
     background: -moz-linear-gradient(45deg, rgba(18, 38, 168, 1) 0%, rgba(143, 113, 163, 1) 100%);
     background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(18, 38, 168, 1)), color-stop(100%, rgba(143, 113, 163, 1)));
     background: -webkit-linear-gradient(45deg, rgba(18, 38, 168, 1) 0%, rgba(143, 113, 163, 1) 100%);
@@ -137,7 +137,7 @@ tr {
 
 }
 
-tr:nth-child(odd) {
+tr:nth-child(even) {
     background-color: rgba(247, 247, 247, 1);
 }
 

@@ -26,7 +26,6 @@
                         <th>Wynagrodzenie</td>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr v-for="employee in Employees">
                         <td>{{employee.imie}}</td>
@@ -88,11 +87,8 @@
             </table>
         </section>
 
-
-
         <section class="container employee-card" id="employee-add">
             <h2>Dodaj pracownika</h2>
-
             <div class="add-wrap">
                 <div>
                     <p>Imię</p>
@@ -116,7 +112,6 @@
                 </div>
                 <button v-on:click="addEmployee()">Dodaj</button>
             </div>
-
         </section>
 
         <section class="container employee-card" id="employee-stats">
@@ -127,7 +122,6 @@
             Pracownicy firmy zarabiają łącznie {{SumAll}} PLN
 
         </section>
-
 
         <script type="text/javascript" src="./js/script.js"></script>
         </script>

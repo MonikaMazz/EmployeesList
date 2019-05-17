@@ -1,17 +1,5 @@
 new Vue({
     el: '#app',
-    // components: {
-    //     'EmployeeRow': {
-    //         props: ['employee'],
-    //         template: `
-    //         <tr>
-    //             <td>{{employee.imie}}</td>
-    //             <td>{{employee.nazwisko}}</td>
-    //             <td>{{employee.dzial}}</td>
-    //             <td>{{employee.wynagrodzenieKwota}} {{employee.wynagrodzenieWaluta}}</td>
-    //         </tr>`
-    //     }
-    // },
     data: {
         addName: '',
         addSurname: '',

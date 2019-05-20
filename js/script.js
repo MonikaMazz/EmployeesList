@@ -98,7 +98,8 @@ new Vue({
         employeesFilteredName: function () {
             var searchText = this.searchName.toLowerCase();
             return this.Employees.filter(function (item) {
-                if (item.imie.toLowerCase().indexOf(searchText) >= 0 || item.nazwisko.toLowerCase().indexOf(searchText) >= 0) {
+                var fullName = item.imie.toLowerCase() + " " + item.nazwisko.toLowerCase()
+                if (item.imie.toLowerCase().indexOf(searchText) >= 0 || item.nazwisko.toLowerCase().indexOf(searchText) >= 0 || fullName.indexOf(searchText) >= 0) {
                     return item;
                 }
 

@@ -60,7 +60,7 @@ new Vue({
     },
     computed: {
         Sections: function () {
-            var section_array = [];
+            let section_array = [];
             for (let i = 0; i < this.Employees.length; i++) {
                 if (section_array.indexOf(this.Employees[i].dzial) === -1) {
                     section_array.push(this.Employees[i].dzial)
@@ -70,8 +70,8 @@ new Vue({
         },
 
         SumSalary: function () {
-            var salarySum = 0;
-            var sum_array = [];
+            let salarySum = 0;
+            let sum_array = [];
             for (let i = 0; i < this.Sections.length; i++) {
                 for (let j = 0; j < this.Employees.length; j++) {
                     if (this.Sections[i] == this.Employees[j].dzial) {
@@ -88,7 +88,7 @@ new Vue({
         },
 
         SumAll: function () {
-            var allSum = 0;
+            let allSum = 0;
             for (let j = 0; j < this.Employees.length; j++) {
                 allSum = parseFloat(allSum) + parseFloat(this.Employees[j].wynagrodzenieKwota);
             }
@@ -96,9 +96,9 @@ new Vue({
         },
 
         employeesFilteredName: function () {
-            var searchText = this.searchName.toLowerCase();
+            let searchText = this.searchName.toLowerCase();
             return this.Employees.filter(function (item) {
-                var fullName = item.imie.toLowerCase() + " " + item.nazwisko.toLowerCase()
+                const fullName = item.imie.toLowerCase() + " " + item.nazwisko.toLowerCase()
                 if (item.imie.toLowerCase().indexOf(searchText) >= 0 || item.nazwisko.toLowerCase().indexOf(searchText) >= 0 || fullName.indexOf(searchText) >= 0) {
                     return item;
                 }
@@ -107,7 +107,7 @@ new Vue({
         },
 
         employeesFilteredSection: function () {
-            var check_section_array = [];
+            let check_section_array = [];
             for (let i = 0; i < this.searchCheck.length; i++) {
                 for (let j = 0; j < this.employeesFilteredName.length; j++) {
                     if (this.searchCheck[i] == this.employeesFilteredName[j].dzial) {
@@ -125,9 +125,9 @@ new Vue({
         },
 
         employeesFilteredSalary: function () {
-            var salary_array = [];
-            var salaryMin = parseFloat(this.searchSalaryMin);
-            var salaryMax = parseFloat(this.searchSalaryMax);
+            let salary_array = [];
+            let salaryMin = parseFloat(this.searchSalaryMin);
+            let salaryMax = parseFloat(this.searchSalaryMax);
             for (let i = 0; i < this.employeesFilteredSection.length; i++) {
                 if (salaryMin < parseFloat(this.employeesFilteredSection[i].wynagrodzenieKwota) && salaryMax > parseFloat(this.employeesFilteredSection[i].wynagrodzenieKwota)) {
                     salary_array.push({
